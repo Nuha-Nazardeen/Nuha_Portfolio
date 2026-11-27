@@ -40,14 +40,23 @@ export default function Projects() {
                 ))}
               </div>
               <div className="flex items-center gap-4 text-sm">
-                <a
-                  href={p.demo}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="inline-flex items-center gap-1 hover:text-muted-foreground transition-colors"
-                >
-                  Live <ArrowUpRight className="h-3.5 w-3.5" />
-                </a>
+                {p.status ? (
+                  <span className="inline-flex items-center gap-1.5 text-muted-foreground">
+                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-foreground animate-pulse" />
+                    {p.status}
+                  </span>
+                ) : (
+                  p.demo !== undefined && (
+                    <a
+                      href={p.demo}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="inline-flex items-center gap-1 hover:text-muted-foreground transition-colors"
+                    >
+                      Live <ArrowUpRight className="h-3.5 w-3.5" />
+                    </a>
+                  )
+                )}
                 <a
                   href={p.github}
                   target="_blank"
